@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "esr",
+  "version": "${version}",
+  "name": "Emissive Skin Renderer",
+  "description": "Make your skin glowing!",
+  "authors": [
+    "SJKZ1"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "sjkz1.com.esr.fabric.EmissiveSkinRendererFabric"
+    ]
+  },
+  "mixins": [
+    "esr.mixins.json",
+    "esr-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "minecraft": ">=1.19.2"
+  }
+}
