@@ -14,6 +14,9 @@
   "entrypoints": {
     "main": [
       "sjkz1.com.esr.fabric.EmissiveSkinRendererFabric"
+    ],
+    "modmenu": [
+      "sjkz1.com.esr.fabric.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -21,7 +24,7 @@
     "esr-common.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.10",
-    "minecraft": ">=1.19.2"
+    "fabricloader": ">=0.14.11",
+    "minecraft": ">=1.19.3"
   }
 }

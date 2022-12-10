@@ -1,0 +1,10 @@
+{
+  "text.autoconfig.esr.title": "Emissive Skin Renderer Config...",
+  "text.autoconfig.esr.option.general.glowSkin": "Glowing skin",
+  "text.autoconfig.esr.option.general.glowHorseArmor": "Glowing horse armor",
+  "text.autoconfig.esr.option.general.palletsRate": "Disappear rate of pixel in Create Glowing skin",
+  "text.autoconfig.esr.option.general.renderPlayerNameInThirdPerson": "Render name tag in third-person",
+  "text.autoconfig.esr.option.general.manualSkin": "Automatic creating glow layer",
+  "open_folder": "Open skin folder",
+  "not_final_gui": "NOT FINAL GUI WIP!!"
+}

@@ -4,8 +4,17 @@
   "package": "sjkz1.com.esr.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BlockEntityWithoutLevelRenderMixin",
+    "CustomHeadLayerMixin",
+    "FontMixin",
+    "SplashManagerMixin"
   ],
   "client": [
+    "HorseRendererMixin",
+    "InventoryScreenMixin",
+    "LivingEntityRendererMixin",
+    "PlayerRenderMixin",
+    "SkullBlockRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

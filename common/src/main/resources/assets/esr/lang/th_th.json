@@ -1,0 +1,10 @@
+{
+  "text.autoconfig.esr.title": "การตั้งค่า esr...",
+  "text.autoconfig.esr.option.general.glowSkin": "สกินเรืองแสง",
+  "text.autoconfig.esr.option.general.glowHorseArmor": "เกราะม้าหนังเรืองแสง",
+  "text.autoconfig.esr.option.general.palletsRate": "อัตราการหายไปของพิกเซลส์ในสี",
+  "text.autoconfig.esr.option.general.renderPlayerNameInThirdPerson": "แสดงชื่อในมุมมองบุคคลที่สาม",
+  "not_final_gui": "GUI ยังไม่เสร็จ!!",
+  "open_folder": "เปิดโฟลเดอร์สกิน",
+  "text.autoconfig.esr.option.general.manualSkin": "Automatic creating glow layer"
+}
