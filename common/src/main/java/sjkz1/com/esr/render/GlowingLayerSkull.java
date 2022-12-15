@@ -52,11 +52,7 @@ public class GlowingLayerSkull {
                     skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
                 }
             }
-            VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-            skullModelBase.setupAnim(g, f, 0.0f);
-            skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
             poseStack.popPose();
-
         }
     }
 
