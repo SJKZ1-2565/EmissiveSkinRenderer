@@ -44,20 +44,10 @@ public class GlowingLayerSkull {
             }
             poseStack.scale(-1.0f, -1.0f, 1.0f);
             if (!StringUtil.isNullOrEmpty(gameProfile.getName())) {
-                for (String s : EmissiveSkinRenderer.SPECIAL_MEMBER) {
-                    if (gameProfile.getName().equals(s)) {
-                        VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-                        skullModelBase.setupAnim(g, f, 0.0f);
-                        skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
-                    }
-                }
+                VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
+                skullModelBase.setupAnim(g, f, 0.0f);
+                skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
                 if (gameProfile.getName().equals("Technoblade")) {
-                    VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-                    skullModelBase.setupAnim(g, f, 0.0f);
-                    skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
-                }
-                if (!ResourceLocation.isValidResourceLocation(EmissiveSkinRenderer.MOD_ID + "textures/skin/glow.png")) {
-                    VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
                     skullModelBase.setupAnim(g, f, 0.0f);
                     skullModelBase.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time));
                 }
@@ -81,18 +71,10 @@ public class GlowingLayerSkull {
             if (StringUtil.isNullOrEmpty(gameProfile.getName())) {
                 return RenderType.entityTranslucent(minecraft.getSkinManager().registerTexture(map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN));
             }
-            for (String s : EmissiveSkinRenderer.SPECIAL_MEMBER) {
-                if (gameProfile.getName().equals(s)) {
-                    return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + s.toLowerCase() + ".png"));
-                }
-            }
             if (gameProfile.getName().equals("Technoblade")) {
                 return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/technoblade.png"));
             }
-            if (!ResourceLocation.isValidResourceLocation(EmissiveSkinRenderer.MOD_ID + "textures/skin/glow.png")) {
-                return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/skin/glow.png"));
-            }
-            return RenderType.entityTranslucent(minecraft.getSkinManager().registerTexture(map.get((Object) MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN));
+            return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + gameProfile.getName().toLowerCase() + ".png"));
         }
         return RenderType.entityCutoutNoCull(DefaultPlayerSkin.getDefaultSkin(UUIDUtil.getOrCreatePlayerUUID(gameProfile)));
     }
