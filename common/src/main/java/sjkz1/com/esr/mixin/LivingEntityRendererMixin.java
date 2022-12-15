@@ -25,7 +25,8 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
 
     @Inject(method = "shouldShowName(Lnet/minecraft/world/entity/LivingEntity;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;getCameraEntity()Lnet/minecraft/world/entity/Entity;"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     public void modifyShouldShowName(T livingEntity, CallbackInfoReturnable<Boolean> cir, double d, float f, Minecraft minecraft, LocalPlayer localPlayer, boolean bl) {
-        if (EmissiveSkinRenderer.CONFIG.general.renderPlayerNameInThirdPerson)
+        if (EmissiveSkinRenderer.CONFIG.general.renderPlayerNameInThirdPerson) {
             cir.setReturnValue(Minecraft.renderNames() && bl && !livingEntity.isVehicle());
+        }
     }
 }

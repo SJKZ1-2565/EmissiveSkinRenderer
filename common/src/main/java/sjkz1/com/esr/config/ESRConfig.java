@@ -22,6 +22,5 @@ public final class ESRConfig implements ConfigData {
         public boolean glowHorseArmor = true;
         public boolean renderPlayerNameInThirdPerson = false;
 
-        public int palletsRate = 100;
     }
 }
