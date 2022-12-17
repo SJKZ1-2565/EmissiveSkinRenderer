@@ -11,6 +11,6 @@ public class EmissiveSkinRendererFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         EmissiveSkinRenderer.init();
-        FabricLoader.getInstance().getModContainer(EmissiveSkinRenderer.MOD_ID).ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(new ResourceLocation("esr:esr_glow_pack"), modContainer, ResourcePackActivationType.NORMAL));
+            FabricLoader.getInstance().getModContainer(EmissiveSkinRenderer.MOD_ID).ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(new ResourceLocation(EmissiveSkinRenderer.MOD_ID,"esr_glow_pack"), modContainer, ResourcePackActivationType.NORMAL));
     }
 }
