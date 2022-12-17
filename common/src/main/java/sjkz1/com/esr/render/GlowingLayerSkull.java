@@ -69,7 +69,8 @@ public class GlowingLayerSkull {
             }
             for (var list : Minecraft.getInstance().getResourcePackRepository().getSelectedPacks()) {
                 if (list.getDescription().getString().equals("Glow skin pack")) {
-                    var resource = Minecraft.getInstance().getResourceManager().getResource(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + gameProfile.getName().toLowerCase() + ".png"));
+                    String name = gameProfile.getName().replace("§","").replace(" ","");
+                    var resource = Minecraft.getInstance().getResourceManager().getResource(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + name.toLowerCase() + ".png"));
                     if(resource.isPresent()) {
                         return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + gameProfile.getName().toLowerCase() + ".png"));
                     }
