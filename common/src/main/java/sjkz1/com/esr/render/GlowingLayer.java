@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -32,9 +33,14 @@ public class GlowingLayer<T extends Entity, M extends EntityModel<T>> extends Re
     @Override
     public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, T entity, float f, float g, float h, float j, float k, float l) {
         float time = h + entity.tickCount;
-        if (!entity.isInvisible() && EmissiveSkinRenderer.CONFIG.general.glowSkin) {
-            VertexConsumer inveterate = multiBufferSource.getBuffer(RenderType.eyes(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + entity.getName().getString().toLowerCase() + ".png")));
-            this.getParentModel().renderToBuffer(poseStack, inveterate, 0xF00000, OverlayTexture.NO_OVERLAY, makeFade(time), makeFade(time), makeFade(time), 1.0F);
+        for (var list : Minecraft.getInstance().getResourcePackRepository().getSelectedPacks()) {
+            if (list.getDescription().getString().equals("Glow skin pack") && ResourceLocation.isValidResourceLocation(EmissiveSkinRenderer.MOD_ID + ":textures/entity/skin/" + entity.getName().getString().toLowerCase() + ".png")) {
+                if (!entity.isInvisible() && EmissiveSkinRenderer.CONFIG.general.glowSkin) {
+                    VertexConsumer inveterate = multiBufferSource.getBuffer(RenderType.eyes(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + entity.getName().getString().toLowerCase() + ".png")));
+                    this.getParentModel().renderToBuffer(poseStack, inveterate, 0xF00000, OverlayTexture.NO_OVERLAY, makeFade(time), makeFade(time), makeFade(time), 1.0F);
+                }
+            }
         }
+
     }
 }

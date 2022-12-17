@@ -1,6 +1,8 @@
 package sjkz1.com.esr.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.packs.PackSelectionModel;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -11,7 +13,10 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,6 +25,8 @@ import sjkz1.com.esr.render.GlowingLayer;
 
 @Mixin(PlayerRenderer.class)
 public abstract class PlayerRenderMixin extends LivingEntityRenderer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>> {
+    @Shadow public abstract void render(AbstractClientPlayer arg, float f, float g, PoseStack arg2, MultiBufferSource arg3, int i);
+    @Shadow public abstract ResourceLocation getTextureLocation(AbstractClientPlayer arg);
     PlayerRenderMixin() {
         super(null, null, 0);
     }
@@ -33,11 +40,14 @@ public abstract class PlayerRenderMixin extends LivingEntityRenderer<AbstractCli
     @Inject(method = "renderHand", at = @At("TAIL"))
     private void renderArm(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, AbstractClientPlayer abstractClientPlayer, ModelPart modelPart, ModelPart modelPart2, CallbackInfo ci) {
         float time = (float) abstractClientPlayer.tickCount;
-        if (!abstractClientPlayer.isInvisible() && EmissiveSkinRenderer.CONFIG.general.glowSkin) {
-            modelPart.xRot = 0.0f;
-            modelPart.render(poseStack, multiBufferSource.getBuffer(RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + abstractClientPlayer.getName().getString().toLowerCase() + ".png"))), i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), 1.0F);
-            modelPart2.xRot = 0.0f;
-            modelPart2.render(poseStack, multiBufferSource.getBuffer(RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + abstractClientPlayer.getName().getString().toLowerCase() + ".png"))), i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), 1.0F);
+        for (var list : Minecraft.getInstance().getResourcePackRepository().getSelectedPacks())
+        {
+            if (list.getDescription().getString().equals("Glow skin pack") && !abstractClientPlayer.isInvisible() && EmissiveSkinRenderer.CONFIG.general.glowSkin) {
+                modelPart.xRot = 0.0f;
+                modelPart.render(poseStack, multiBufferSource.getBuffer(RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + abstractClientPlayer.getName().getString().toLowerCase() + ".png"))), i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), 1.0F);
+                modelPart2.xRot = 0.0f;
+                modelPart2.render(poseStack, multiBufferSource.getBuffer(RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + abstractClientPlayer.getName().getString().toLowerCase() + ".png"))), i, OverlayTexture.NO_OVERLAY, GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), GlowingLayer.makeFade(time), 1.0F);
+            }
         }
     }
 }
