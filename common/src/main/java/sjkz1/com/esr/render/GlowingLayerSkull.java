@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.SkullBlock;
 import org.jetbrains.annotations.Nullable;
 import sjkz1.com.esr.EmissiveSkinRenderer;
 
-import java.util.Arrays;
 import java.util.Map;
 
 public class GlowingLayerSkull {
@@ -68,8 +67,7 @@ public class GlowingLayerSkull {
             if (StringUtil.isNullOrEmpty(gameProfile.getName())) {
                 return RenderType.entityTranslucent(minecraft.getSkinManager().registerTexture(map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN));
             }
-            for (var list : Minecraft.getInstance().getResourcePackRepository().getSelectedPacks())
-            {
+            for (var list : Minecraft.getInstance().getResourcePackRepository().getSelectedPacks()) {
                 if (list.getDescription().getString().equals("Glow skin pack") && ResourceLocation.isValidResourceLocation(EmissiveSkinRenderer.MOD_ID + ":textures/entity/skin/" + gameProfile.getName().toLowerCase() + ".png")) {
                     return RenderType.dragonExplosionAlpha(new ResourceLocation(EmissiveSkinRenderer.MOD_ID, "textures/entity/skin/" + gameProfile.getName().toLowerCase() + ".png"));
                 }
