@@ -26,7 +26,7 @@ public class GlowingLayer<T extends Entity, M extends EntityModel<T>> extends Re
     }
 
     public static float makeFade(float alpha) {
-        return Math.min(0.7F, (Mth.sin(alpha / 24) + 1F) / 2F + 0.15F);
+        return EmissiveSkinRenderer.CONFIG.general.fadingSkin ? Math.min(0.7F, (Mth.sin(alpha / 24) + 1F) / 2F + 0.15F) : 1;
     }
 
 

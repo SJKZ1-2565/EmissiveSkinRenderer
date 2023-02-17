@@ -20,6 +20,7 @@ public final class ESRConfig implements ConfigData {
     public static class General {
         public boolean glowSkin = true;
         public boolean glowHorseArmor = true;
+        public boolean fadingSkin = true;
         public boolean renderPlayerNameInThirdPerson = false;
 
     }

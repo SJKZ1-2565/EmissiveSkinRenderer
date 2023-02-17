@@ -5,6 +5,7 @@
   "text.autoconfig.esr.option.general.palletsRate": "Disappear rate of pixel in Create Glowing skin",
   "text.autoconfig.esr.option.general.renderPlayerNameInThirdPerson": "Render name tag in third-person",
   "text.autoconfig.esr.option.general.manualSkin": "Automatic creating glow layer",
+  "text.autoconfig.esr.option.general.fadingSkin": "Blinking Skin",
   "open_folder": "Open skin folder",
   "not_final_gui": "NOT FINAL GUI WIP!!"
 }
